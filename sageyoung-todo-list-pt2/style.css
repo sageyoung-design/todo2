@@ -1,0 +1,260 @@
+/* Set up flexbox, load a default font */
+:root {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Eczar';
+    min-height: 100vh;
+    padding-top: 3%;
+    /*Part 2: Edit colors and styles to customize your TODO list.
+    You must also update add a background, such as a color, gradient, or image.
+    Any further styling is up to you!
+    */
+    --primary-color: black;
+    --primary-background: rgb(26, 27, 27, 0.2);
+    background-image: url('assets/bgimage.png');
+    background-size: cover; 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+@font-face{
+    font-family: Eczar;
+    src: url('assets/Eczar-VariableFont_wght.ttf');
+}
+
+@font-face{
+    font-family: Maplestory;
+    src: url('assets/BeauRivage-Regular.ttf');
+}
+
+::placeholder {
+  color: black;
+  opacity: .6;
+}
+
+
+body {
+  max-height: 1vh;
+  position: absolute;
+  right: 150px;
+}
+
+#header {
+    font-size: 3rem;
+    color: black;
+    font-family: 'Maplestory';
+    filter: drop-shadow(4px 4px 2px white);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    padding: 1.2rem;
+    background-image: url('assets/woodbig.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 3em;
+    align-items: center;
+}
+
+form input {
+    padding-left: 8px;
+    font-family: 'Eczar';
+    font-size: 17px;
+    border: 2px solid transparent;
+    background-color: rgb(174, 90, 21, 0.5);
+    color: black;
+    width: 100%;
+}
+
+form input:hover {
+    cursor: text;
+    border: 2px solid saddlebrown;
+}
+
+form button {
+    padding: 3px;
+    margin-left: 4px;
+    font-size: 17px;
+    font-family: 'Eczar';
+    border-radius: 8px;
+    min-width: 100px;
+    transition: all 0.3s ease;
+    background-color: rgb(174, 90, 21, 1);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+form button:hover, form button:focus {
+    background-color: rgb(113, 56, 9);
+    color:white;
+
+}
+
+form button:active {
+    border: 2px solid whitesmoke;
+    color:white;
+}
+
+
+/* Part 2: Add animations for completing and removing events.
+Any further animations are up to you! */
+
+button {
+    border: none;
+    color: var(--primary-color);
+    background-color: whitesmoke;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.todo-list {
+    /* Removes the bullet points */
+    list-style: none;
+}
+
+.todo-div {
+    margin: 1rem;
+    display: flex;
+    padding: 0.25em 0.5em;
+    background-image: url('assets/woodlight.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: bounceIn 400ms;
+}
+
+.todo-div li{
+    padding: 7px;
+    padding-left: 18px;
+    font-size: 17px;
+    flex: 1;
+}
+
+.check-btn, .delete-btn {
+    font-size: 17px;
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin: 0 5px;
+    background: 0%;
+    align-self: center;
+    animation: all 0.3s ease;
+}
+
+.fa-trash, .fa-check { 
+    pointer-events: none;
+}
+
+:is(.check-btn, .delete-btn):hover {
+    animation: wiggle 500ms forwards;
+    scale: 1.3;
+}
+
+:is(.check-btn, .delete-btn):active {
+    animation: wiggle 500ms forwards;
+    scale: .9;
+}
+
+.completed {
+    text-decoration: line-through;
+    background-image: url('assets/wooddark.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(80%);
+    animation: shaking 200ms 2;
+}
+
+.remove {
+    animation: fallDown 1500ms;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-10deg);
+    } 
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateY(100%) rotate(10deg);
+    }
+    35% {
+        transform: translateY(180%) rotate(-15deg);
+    }
+    100% {
+        transform: translateY(1000%);
+    }
+}
+
+@keyframes shaking {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-5px, 5px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.musicbutton {
+    background-color: rgb(0,0,0,0);
+    color: black;
+    margin: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    border-radius: 100px;    
+    width: 24px;
+    height: 24px;
+}
+
+.musicbutton:hover {
+    background-color: #0056b3;
+    border-color: #afcff2;
+    transform: scale(1.1);
+
+}
+
+.musicbutton:active {
+    transform: scale(0.9);
+}
+
+.musicbutton:focus {
+    transform: scale(1.3);
+}
+
+#musicplayer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.leaf {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    right: -70px;
+    top: 4px;
+}
